@@ -1,5 +1,4 @@
 package test;
-import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
@@ -12,7 +11,8 @@ import src.Solution;
 public class letterCombinationsTest {
     @Test
     public void testGetCombos() {
-        String input = ("23");
+        Solution solution = new Solution();
+        String digits = ("23");
         List<String> expectedOutput = new ArrayList<>();
         expectedOutput.add("ad");
         expectedOutput.add("ae");
@@ -21,12 +21,10 @@ public class letterCombinationsTest {
         expectedOutput.add("be");
         expectedOutput.add("bf");
         expectedOutput.add("cd");
-        expectedOutput.add("cd");
+        expectedOutput.add("ce");
         expectedOutput.add("cf");
-        
+        List<String> result = solution.letterCombinations(digits);
 
-        Solution solution = new Solution();
-        List<String> result = solution.letterCombinations(input);
         assertEquals(expectedOutput, result);;
 
         

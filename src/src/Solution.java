@@ -10,7 +10,7 @@ public class Solution {
         if (digits == null || digits.length() == 0) {
             return new ArrayList<String>();
         }
-
+        
         Map<Character, String> map = new HashMap<Character, String>() {{
             put('2', "abc");
             put('3', "def");
@@ -23,29 +23,24 @@ public class Solution {
         }};
         
         List<String> results = new ArrayList<String>();
-
-        backtrack(digits, 0, new StringBuilder(), map, results);
-
-        return results;
         
-    }
-
-    private void backtrack(String digits, int index, StringBuilder combination, Map<Character, String> map,
-            List<String> results) {
-                if (index == digits.length()) {
-                    results.add(combination.toString());
-                    return;
-                }
-    
-
-                String letters = map.get(digits.charAt(index));
-
-                for (int i = 0; i < letters.length(); i++) {
-                    combination.append(letters.charAt(i));
-                    backtrack(digits, i + 1, combination, map, results);
-                    combination.deleteCharAt(combination.length()-1);
-                }
-
+        backtrack(digits, 0, new StringBuilder(), map, results);
+        
+        return results;
     }
     
+    private void backtrack(String digits, int index, StringBuilder combination, Map<Character, String> map, List<String> results) {
+        if (index == digits.length()) {
+            results.add(combination.toString());
+            return;
+        }
+        
+        String letters = map.get(digits.charAt(index));
+        
+        for (int i = 0; i < letters.length(); i++) {
+            combination.append(letters.charAt(i));
+            backtrack(digits, index + 1, combination, map, results);
+            combination.deleteCharAt(combination.length() - 1);
+        }
+    }
 }
